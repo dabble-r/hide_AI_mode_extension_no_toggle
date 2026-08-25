@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hide Google AI Overviews and Mode</title>
+    <style>
+      body {
+        --bg: #fff;
+        --text: #202020;
+        --muted: #666;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Inter, Inter-Fallback, Geist, Geist-Fallback, Roboto, Roboto-Fallback, Arial, Arial-Fallback, sans-serif;
+        width: 17rem;
+        padding: 0.75rem 1rem 1rem;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .notice-row {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+      .lock-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        margin-top: 0.1rem;
+        color: #5f6368;
+      }
+      h1 {
+        font-size: 0.95rem;
+        margin: 0 0 0.25rem;
+      }
+      p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.35;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          --bg: #202020;
+          --text: #fff;
+          --muted: #aaa;
+        }
+        .lock-icon {
+          color: #9aa0a6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notice-row">
+      <svg class="lock-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/>
+      </svg>
+      <div>
+        <h1 id="noticeTitle">Managed by your school</h1>
+        <p id="noticeBody">AI Mode and AI Overviews are hidden on Google Search by district IT policy. This setting cannot be changed from this browser.</p>
+      </div>
+    </div>
+    <script>
+      document.getElementById('noticeTitle').textContent = chrome.i18n.getMessage('managedNoticeTitle');
+      document.getElementById('noticeBody').textContent = chrome.i18n.getMessage('managedNoticeBody');
+    </script>
+  </body>
+</html>
